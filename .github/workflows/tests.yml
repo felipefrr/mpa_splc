@@ -1,0 +1,29 @@
+# .github/workflows/tests.yml
+name: CI
+on: [push,pull_request]
+jobs:
+  ci-enviroment-setup:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Python version
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+        architecture: x64
+
+    - name: Setup virtual environment
+      run: make setup-venv
+
+    - name: Run the tests
+      run: make checks
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./coverage.xml # optional
+        name: codecov-umbrella # optional
+        verbose: true # optional (default = false)

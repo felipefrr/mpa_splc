@@ -1,0 +1,13 @@
+.DS_Store
+.idea/
+.vscode/
+.venv/
+_build/
+notebooks/
+setup
+conf.py
+index.rst
+.coverage
+*.pyc
+setup_mac.sh
+codecov*
