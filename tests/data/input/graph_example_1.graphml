@@ -1,0 +1,120 @@
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+<key id="d0" for="node" attr.name="label" attr.type="string"></key><key id="d1" for="edge" attr.name="weight" attr.type="double"/><key id="d2" for="edge" attr.name="spc" attr.type="double"/><key id="d3" for="edge" attr.name="splc" attr.type="double"/><graph id="G" edgedefault="directed">
+<node id="A">
+<data key="d0">A</data>
+</node><node id="C">
+<data key="d0">C</data>
+</node><node id="E">
+<data key="d0">E</data>
+</node><node id="B">
+<data key="d0">B</data>
+</node><node id="D">
+<data key="d0">D</data>
+</node><node id="F">
+<data key="d0">F</data>
+</node><node id="G">
+<data key="d0">G</data>
+</node><node id="K">
+<data key="d0">K</data>
+</node><node id="L">
+<data key="d0">L</data>
+</node><node id="H">
+<data key="d0">H</data>
+</node><node id="I">
+<data key="d0">I</data>
+</node><node id="J">
+<data key="d0">J</data>
+</node><node id="P">
+<data key="d0">P</data>
+</node><node id="M">
+<data key="d0">M</data>
+</node><node id="N">
+<data key="d0">N</data>
+</node><node id="O">
+<data key="d0">O</data>
+</node>  <edge source="A" target="C">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="A" target="E">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="B" target="C">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="B" target="D">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="B" target="E">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="C" target="D">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="D" target="E">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="D" target="F">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="E" target="F">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="E" target="G">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="E" target="K">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="E" target="L">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="F" target="G">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="F" target="H">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="G" target="H">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="G" target="I">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="G" target="J">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="G" target="L">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="P" target="M">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="P" target="N">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge>  <edge source="P" target="O">
+<data key="d1">0.0</data>
+<data key="d2">0.0</data>
+<data key="d3">0.0</data>
+</edge></graph>
+</graphml>
