@@ -5,12 +5,13 @@
 Repository for made with the intent of providing optimal implementations of Main Path Analysis (MPA) with Search Path Link Count (SPLC). The work done here is proof of concept for my undergraduation thesis at the Institute of Mathematics and Statistics (IME) in University of São Paulo (USP).
 
 ### 📝💻 Todo
-- [ ] Migrate all the code of to this repo
+- [ ] Migrate all the code of rdurelli/splc_main_path to this repo
 - [ ] Write the unit tests
+- [ ] Implement IO functions
 - [ ] Implement my own version of SPLC
-- [ ] Implement cycle removal
+- [ ] Implement cycle removal. P.S.: we need to make a discussion about the most suitable method considering your graph structure and magnitude of the set cycles.
 - [ ] Implement Main Path Search
-- [ ] Create good UI
+- [ ] Create a good UI
 
 ## Getting started
 ```
@@ -35,41 +36,10 @@ make run-checks
 
 We cover the following aspects of setting up a python project, including: Unit Tests, Code Coverage, Linting and Type Checking.
 
-### All wrapped in a Makefile
+
+## Benchmark
 ```
-clean-pyc:
-	find . -name '*.pyc' -exec rm -f {} +
-	find . -name '*.pyo' -exec rm -f {} +
-	find . -name '*~' -exec rm -f {} +
-	find . -name '__pycache__' -exec rm -fr {} +
-
-clean-test:
-	rm -f .coverage
-	rm -f .coverage.*
-
-clean: clean-pyc clean-test
-
-test: clean
-	. .venv/bin/activate && py.test tests --cov=src --cov-report=term-missing --cov-fail-under 95
-```
-
-### GitHub Actions with each `git push`
-```
-# .github/workflows/tests.yml
-name: Tests
-on: push
-jobs:
-  tests:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v1
-      with:
-        python-version: 3.8
-        architecture: x64
-    - run: make setup
-    - run: make check
-    - run: bash <(curl -s https://codecov.io/bash)
+pytest benchmarks/tests_edge_weights_functions.py
 ```
 
 ## 📃 Citation
