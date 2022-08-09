@@ -1,9 +1,17 @@
 """
-Weight calculation methods for Main Path Analysis.
+Edge weight calculation methods for Main Path Analysis.
 """
 import networkx as nx
 
 from src.algorithms.graphs import path_contain_edge
+from src.algorithms.node_weights import calculate_n_all_minus, calculate_n_plus
+
+__all__ = [
+    "calculate_spc",
+    "calculate_splc_fast",
+    "calculate_splc",
+    "calculate_splc_optimized"
+]
 
 
 def calculate_spc(G, sources, syncs):
@@ -101,7 +109,7 @@ def calculate_splc(G, syncs):
         ----------
         None
 
-        """
+    """
     edges = list(map(list, G.edges()))
 
     for edge in edges:
@@ -123,3 +131,38 @@ def calculate_splc(G, syncs):
                     paths_containing_edge += 1
 
         G[edge_head][edge_tail]["SPLC"] = paths_containing_edge
+
+
+def calculate_splc_optimized(G, syncs):
+    """Calculate optimally, using topological sorting and dynamic programming,
+    the edge weight SPLC for all edges in `G` and stores its values in a hash
+    inside `G where its key is the edge and value is the `SPLC` calculated.
+
+        Parameters
+        ----------
+        G: NetworkX graph
+
+        syncs:  list
+                Sync nodes list
+
+        Returns
+        ----------
+        None
+
+        Notes
+        ----------
+        It is important to note that this function uses topological ordering
+        to calculate the `SPLC` values, and for it to work correctly, the graph
+        must be acyclic.
+    """
+    topologic_order = list(nx.topological_sort(G))
+    for node in topologic_order:
+        calculate_n_all_minus(G, node)
+
+    reversed_top_order = list(reversed(topologic_order))
+    for node in reversed_top_order:
+        calculate_n_plus(G, node, syncs)
+
+    edges = list(map(list, G.edges()))
+    for edge in edges:
+        G[edge[0]][edge[1]]["SPLC"] = G.nodes[edge[0]]["Nall-"] * G.nodes[edge[1]]["N+"]

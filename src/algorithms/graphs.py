@@ -53,7 +53,7 @@ def compare_graphs(G1, G2) -> bool:
     return nx.is_isomorphic(G1, G2, edge_match=graph_comparison_helper)
 
 
-def get_syncs(G):
+def get_syncs(G) -> list:
     """Returns a list containing all the sync nodes in `G`.
 
     Parameters
@@ -69,7 +69,7 @@ def get_syncs(G):
     return [node for node in G.nodes if G.out_degree(node) == 0]
 
 
-def get_sources(G):
+def get_sources(G) -> list:
     """Returns a list containing all the source nodes in `G`.
 
     Parameters
@@ -85,7 +85,7 @@ def get_sources(G):
     return [node for node in G.nodes if G.in_degree(node) == 0]
 
 
-def path_contain_edge(edge: list, path: list):
+def path_contain_edge(edge: list, path: list) -> bool:
     """Returns True if and only if `path` contain the `edge`.
 
     Parameters
