@@ -1,7 +1,6 @@
 """
 Node weight calculation methods for Main Path Analysis.
 """
-import networkx as nx
 
 __all__ = [
     "calculate_n_all_minus",
@@ -47,7 +46,10 @@ def calculate_n_plus(G, node: str, syncs: list):
         G: NetworkX graph
 
         node:  str
-               The starting node label
+               Starting node label
+
+        syncs: list
+               List of sync nodes
 
         Returns
         ----------

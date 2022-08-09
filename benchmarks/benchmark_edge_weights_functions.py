@@ -34,11 +34,13 @@ def test_calc_splc(benchmark, di_G):
     def splc():
         calculate_splc(di_G.G, di_G.syncs)
 
+
 @pytest.mark.benchmark(group="SPLC")
 def test_calc_splc_fast(benchmark, di_G):
     @benchmark
     def splc_fast():
         calculate_splc_fast(di_G.G, di_G.sources, di_G.syncs)
+
 
 @pytest.mark.benchmark(group="SPLC")
 def test_calc_splc_optimized(benchmark, di_G):
