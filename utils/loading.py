@@ -46,14 +46,13 @@ def load_graphml_file(file_path):
 
         Parameters
         ----------
-        file_path : string
+        file_path : str
             A string with the absolute path of the .graphml file.
 
 
         Returns
         -------
-        G : graph
-            A NetworkX graph.
+        G : networkx.DiGraph
     """
     return nx.read_graphml(file_path)
 
@@ -63,14 +62,13 @@ def load_csv_file(file_path):
 
         Parameters
         ----------
-        file_path : string
+        file_path : str
             A string with the absolute path of the .csv file.
 
 
         Returns
         -------
-        G : graph
-            A NetworkX graph.
+        G : networkx.DiGraph
     """
 
     data = pd.read_csv(file_path)

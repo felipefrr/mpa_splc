@@ -5,12 +5,13 @@
 Repository for made with the intent of providing optimal implementations of Main Path Analysis (MPA) with Search Path Link Count (SPLC). The work done here is proof of concept for my undergraduation thesis at the Institute of Mathematics and Statistics (IME) in University of São Paulo (USP).
 
 ### 📝💻 Todo
-- [ ] Migrate all the code of rdurelli/splc_main_path to this repo
-- [ ] Write the unit tests
-- [ ] Implement IO functions
-- [ ] Implement my own version of SPLC
-- [ ] Implement cycle removal. P.S.: we need to make a discussion about the most suitable method considering your graph structure and magnitude of the set cycles.
 - [ ] Implement Main Path Search
+- [ ] Write the unit tests for `convert_graph_to_dag`
+- [50%] Migrate all the code of rdurelli/splc_main_path to this repo
+- [✔️] Write the unit tests
+- [✔️] Implement IO functions
+- [✔️] Implement my own version of SPLC
+- [✔️] Implement cycle removal. P.S.: we need to make a discussion about the most suitable method considering your graph structure and magnitude of the set cycles. It was implemented in the `convert_graph_to_dag`, considering the heuristics of removing the edge with the least `pln_date`.
 - [ ] Create a good UI
 
 ## Getting started

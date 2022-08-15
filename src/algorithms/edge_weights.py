@@ -21,7 +21,7 @@ def calculate_spc(G, sources, syncs):
 
     Parameters
     ----------
-    G: NetworkX graph
+    G: networkx.DiGraph
 
     sources: list
              Source nodes list
@@ -56,7 +56,7 @@ def calculate_splc_fast(G, sources, syncs):
 
         Parameters
         ----------
-        G: NetworkX graph
+        G: networkx.DiGraph
 
         sources: list
                  Source nodes list
@@ -100,7 +100,7 @@ def calculate_splc(G, syncs):
 
         Parameters
         ----------
-        G: NetworkX graph
+        G: networkx.DiGraph
 
         syncs:  list
                 Sync nodes list
@@ -140,7 +140,7 @@ def calculate_splc_optimized(G, syncs):
 
         Parameters
         ----------
-        G: NetworkX graph
+        G: networkx.DiGraph
 
         syncs:  list
                 Sync nodes list

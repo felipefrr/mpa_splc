@@ -15,7 +15,7 @@ def calculate_n_all_minus(G, node: str):
 
         Parameters
         ----------
-        G: NetworkX graph
+        G: networkx.DiGraph
 
         node:  str
                The starting node label
@@ -43,7 +43,7 @@ def calculate_n_plus(G, node: str, syncs: list):
 
         Parameters
         ----------
-        G: NetworkX graph
+        G: networkx.DiGraph
 
         node:  str
                Starting node label
