@@ -133,9 +133,9 @@ def remove_cycles(G, weight='pln_date'):
         edges = [(cycle[-1], cycle[0])]
         scores = [(G[cycle[-1]][cycle[0]][weight])]
 
-        for i, j in zip(cycle[:-1], cycle[1:]):
-            edges.append((i, j))
-            scores.append(G[i][j][weight])
+        for head, tail in zip(cycle[:-1], cycle[1:]):
+            edges.append((head, tail))
+            scores.append(G[head][tail][weight])
 
-        i, j = edges[scores.index(min(scores))]
-        G.remove_edge(i, j)
+        head, tail = edges[scores.index(min(scores))]
+        G.remove_edge(head, tail)
