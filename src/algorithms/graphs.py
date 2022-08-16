@@ -2,14 +2,13 @@
 Graph methods for Main Path Analysis.
 """
 import networkx as nx
-from copy import deepcopy
 
 __all__ = [
     "compare_graphs",
     "get_syncs",
     "get_sources",
     "path_contain_edge",
-    "convert_graph_to_dag"
+    "remove_cycles"
 ]
 
 
@@ -108,11 +107,10 @@ def path_contain_edge(edge: list, path: list) -> bool:
     return any(map(lambda x: path[x:x + len(edge)] == edge, range(len(path) - len(edge) + 1)))
 
 
-def convert_graph_to_dag(G, weight='pln_date'):
-    """ Convert the digraph with cycles to an Acyclic Direct Graph (DAG)
+def remove_cycles(G, weight='pln_date'):
+    """ Remove the cycles of the digraph to convert it an Acyclic Direct Graph (DAG)
 
-    The heuristic in this function is to reverse the edge with the lowest weight of the cycle
-    if possible, otherwise remove it.
+    The heuristic in this function is to remove the edge with the lowest weight of the cycle.
 
     Parameters
     ----------
@@ -123,34 +121,21 @@ def convert_graph_to_dag(G, weight='pln_date'):
 
     Returns
     -------
-    networkx.DiGraph
-        The DAG made out of G.
+    None
 
     Notes
     -----
         The default value for weight is `pln_date` because it considers the configuration of
         our personal graph.
     """
-    number_of_cycles = len(list(nx.simple_cycles(G)))
     while not nx.is_directed_acyclic_graph(G):
         cycle = next(nx.simple_cycles(G))
         edges = [(cycle[-1], cycle[0])]
         scores = [(G[cycle[-1]][cycle[0]][weight])]
+
         for i, j in zip(cycle[:-1], cycle[1:]):
             edges.append((i, j))
             scores.append(G[i][j][weight])
 
         i, j = edges[scores.index(min(scores))]
-
-        # Create a copy of the Graph to check whether it will remove or reverse the edge
-        copy_of_G = deepcopy(G)
-        copy_of_G.remove_edge(i, j)
-        copy_of_G.add_edge(j, i)
-
-        # Check if we reverse the edge it still preserves the acyclicity
-        new_num_of_cycles = len(list(nx.simple_cycles(copy_of_G)))
-        if new_num_of_cycles < number_of_cycles:
-            G.add_edge(j, i, weight=min(scores))
         G.remove_edge(i, j)
-        number_of_cycles = new_num_of_cycles
-    return G
