@@ -7,7 +7,8 @@ __all__ = [
     "get_all_input_graphml_files_path",
     "get_all_output_csv_files_path",
     "load_graphml_file",
-    "load_csv_file"
+    "load_csv_file",
+    "get_file"
 ]
 
 
@@ -73,10 +74,33 @@ def load_csv_file(file_path):
 
     data = pd.read_csv(file_path)
     G = nx.from_pandas_edgelist(
-                                data,
-                                source='SOURCE',
-                                target='TARGET',
-                                create_using=nx.DiGraph(),
-                                edge_attr=["SPC", "SPLC"]
+        data,
+        source='SOURCE',
+        target='TARGET',
+        create_using=nx.DiGraph(),
+        edge_attr=["SPC", "SPLC"]
     )
     return G
+
+
+def get_file(file_dir: str, file_name: str) -> str:
+    """Returns the graph from a .csv loaded in a NetworkX graph.
+
+        Parameters
+        ----------
+        file_dir: str
+            The string with the module directory where the file is.
+
+        file_name : str
+            The string with the name of the file to load.
+
+
+        Returns
+        -------
+        file_path : str
+            The file's absolute path.
+    """
+    local_path = os.path.abspath(os.path.dirname(__file__))
+    local_path = os.path.join(local_path, "..", file_dir)
+    file_path = os.path.join(local_path, file_name)
+    return file_path

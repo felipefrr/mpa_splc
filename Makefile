@@ -45,3 +45,7 @@ run-checks:
 
 bash:
 	docker run --rm -it --name run-checks -v $(shell pwd):/opt -t dev bash
+
+performance-compare:
+	@echo [ === BENCHMARK === ]
+	pytest --benchmark-save=edge_weights --benchmark-verbose benchmarks/benchmark_edge_weights_functions.py
