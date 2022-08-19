@@ -1,6 +1,6 @@
 import networkx as nx
 
-from src.algorithms.graphs import get_syncs, get_sources, path_contain_edge, remove_cycles
+from src.algorithms.graphs import get_syncs, get_sources, path_contain_edge, remove_cycles, add_artificial_source_sync
 
 
 def test_dummy_graph():
@@ -86,3 +86,17 @@ def test_remove_cycles_case3():
     for edge in edges:
         u, v = edge
         assert (not G.has_edge(u, v) or not G.has_edge(v, u))
+
+
+def test_add_artificial_source_sync_dummy():
+    G = nx.DiGraph()
+    add_artificial_source_sync(G)
+    assert not get_sources(G)
+    assert not get_syncs(G)
+
+
+def test_add_artificial_source_sync():
+    G = nx.DiGraph([(0, 1), (1, 2), (3, 2), (4, 1), (2, 5)])
+    add_artificial_source_sync(G)
+    assert get_sources(G) == ['artif_source']
+    assert get_syncs(G) == ['artif_sync']

@@ -8,7 +8,8 @@ __all__ = [
     "get_syncs",
     "get_sources",
     "path_contain_edge",
-    "remove_cycles"
+    "remove_cycles",
+    "add_artificial_source_sync"
 ]
 
 
@@ -139,3 +140,33 @@ def remove_cycles(G, weight='pln_date'):
 
         head, tail = edges[scores.index(min(scores))]
         G.remove_edge(head, tail)
+
+
+def add_artificial_source_sync(G):
+    """ Add two artificial vertices, `artif_source` and `artif_sync` vertex such that reduces
+    the graph set of sources to a single source and syncs to a single sync vertex.
+
+    Parameters
+    ----------
+    G : networkx.DiGraph
+
+    Returns
+    -------
+    None
+
+    Notes
+    -----
+        The resulting graph is always connected because previous connected components are
+        joined at source and sink.
+    """
+    if nx.is_empty(G):
+        return
+
+    sources = get_sources(G)
+    syncs = get_syncs(G)
+
+    for source in sources:
+        G.add_edge('artif_source', source)
+
+    for sync in syncs:
+        G.add_edge(sync, 'artif_sync')
