@@ -7,11 +7,10 @@ We have the intent of further adding these algorithms implementations in the Net
 We're covering the following aspects of this project: Unit Tests, Code Coverage, Linting and Type Checking.
 
 ### 📝💻 Todo
-- [ ] Implement function add artificial source and sync vertex
-- [ ] Implement Main Path Search
-- [ ] Create a good UI
 - [ ] Improve unit tests implementation
-- [50%] Migrate all the code of rdurelli/splc_main_path to this repo
+- [✔️] Implement function add artificial source and sync vertex
+- [✔️] Implement Main Path Search
+- [✔️] Migrate all the code of rdurelli/splc_main_path to this repo
 - [✔️] Write the unit tests for `convert_graph_to_dag`
 - [✔️] Write the unit tests
 - [✔️] Implement IO functions
@@ -46,6 +45,14 @@ make performance-compare
 The benchmark in the file `tests_graph_functions.py` correspond to the function `remove_cycles` with the large graph `benchmarks/data/input/gigante.csv`. You can run it with the following command:
 ```
 pytest --benchmark-verbose benchmarks/benchmark_graph_functions.py
+```
+The benchmark in the file `tests_path_functions.py` correspond to the function `main_path`. You can run it with the following command:
+```
+pytest --benchmark-verbose benchmarks/benchmark_graph_functions.py
+```
+The benchmark in the file  `tests_path_functions_heavy.py` with the large graph `benchmarks/data/input/gigante_without_cycles.csv`. You can run it with the following command:
+```
+pytest --benchmark-verbose benchmarks/tests_path_functions_heavy.py
 ```
 
 ## 📃 Citation
