@@ -1,5 +1,5 @@
 """
-Graph methods for Main Path Analysis.
+Directed Acyclic Graph methods for Main Path Analysis.
 """
 import networkx as nx
 
@@ -108,7 +108,7 @@ def path_contain_edge(edge: list, path: list) -> bool:
     return any(map(lambda x: path[x:x + len(edge)] == edge, range(len(path) - len(edge) + 1)))
 
 
-def remove_cycles(G, weight='pln_date'):
+def remove_cycles(G, weight="pln_date"):
     """ Remove the cycles of the digraph to convert it an Acyclic Direct Graph (DAG)
 
     The heuristic in this function is to remove the edge with the lowest weight of the cycle.
@@ -143,7 +143,7 @@ def remove_cycles(G, weight='pln_date'):
 
 
 def add_artificial_source_sync(G):
-    """ Add two artificial vertices, `artif_source` and `artif_sync` vertex such that reduces
+    """ Add two artificial vertices, `source` and `sync` vertex such that reduces
     the graph set of sources to a single source and syncs to a single sync vertex.
 
     Parameters
@@ -166,7 +166,7 @@ def add_artificial_source_sync(G):
     syncs = get_syncs(G)
 
     for source in sources:
-        G.add_edge('artif_source', source)
+        G.add_edge("source", source)
 
     for sync in syncs:
-        G.add_edge(sync, 'artif_sync')
+        G.add_edge(sync, "sync")

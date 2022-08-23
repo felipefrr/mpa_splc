@@ -98,5 +98,5 @@ def test_add_artificial_source_sync_dummy():
 def test_add_artificial_source_sync():
     G = nx.DiGraph([(0, 1), (1, 2), (3, 2), (4, 1), (2, 5)])
     add_artificial_source_sync(G)
-    assert get_sources(G) == ['artif_source']
-    assert get_syncs(G) == ['artif_sync']
+    assert get_sources(G) == ['source']
+    assert get_syncs(G) == ['sync']

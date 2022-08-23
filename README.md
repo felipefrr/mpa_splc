@@ -7,9 +7,10 @@ We have the intent of further adding these algorithms implementations in the Net
 We're covering the following aspects of this project: Unit Tests, Code Coverage, Linting and Type Checking.
 
 ### 📝💻 Todo
-- [ ] Implement function add artificial source and sync vertex. 
+- [ ] Implement function add artificial source and sync vertex
 - [ ] Implement Main Path Search
 - [ ] Create a good UI
+- [ ] Improve unit tests implementation
 - [50%] Migrate all the code of rdurelli/splc_main_path to this repo
 - [✔️] Write the unit tests for `convert_graph_to_dag`
 - [✔️] Write the unit tests
