@@ -2,7 +2,7 @@ import networkx as nx
 import pytest
 
 from src.algorithms.edge_weights import calculate_spc, calculate_splc_fast, calculate_splc, calculate_splc_optimized
-from src.algorithms.graphs import get_syncs, get_sources
+from src.algorithms.dag import get_syncs, get_sources
 
 
 class DigraphExamples:

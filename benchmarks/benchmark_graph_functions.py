@@ -2,7 +2,7 @@ import networkx as nx
 import pandas as pd
 import pytest
 
-from src.algorithms.graphs import remove_cycles
+from src.algorithms.dag import remove_cycles
 from utils.loading import get_file
 
 

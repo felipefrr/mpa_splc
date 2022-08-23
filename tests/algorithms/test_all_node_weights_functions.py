@@ -1,7 +1,7 @@
 import networkx as nx
 import pytest
 
-from src.algorithms.graphs import get_syncs
+from src.algorithms.dag import get_syncs
 from src.algorithms.node_weights import calculate_n_all_minus, calculate_n_plus
 
 

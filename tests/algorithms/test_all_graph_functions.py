@@ -1,6 +1,6 @@
 import networkx as nx
 
-from src.algorithms.graphs import get_syncs, get_sources, path_contain_edge, remove_cycles, add_artificial_source_sync
+from src.algorithms.dag import get_syncs, get_sources, path_contain_edge, remove_cycles, add_artificial_source_sync
 
 
 def test_dummy_graph():

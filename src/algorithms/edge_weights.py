@@ -3,7 +3,7 @@ Edge weight calculation methods for Main Path Analysis.
 """
 import networkx as nx
 
-from src.algorithms.graphs import path_contain_edge
+from src.algorithms.dag import path_contain_edge
 from src.algorithms.node_weights import calculate_n_all_minus, calculate_n_plus
 
 __all__ = [

@@ -1,7 +1,7 @@
 import networkx as nx
 import pytest
 
-from src.algorithms.graphs import get_syncs, get_sources, compare_graphs
+from src.algorithms.dag import get_syncs, get_sources, compare_graphs
 from src.algorithms.edge_weights import calculate_spc, calculate_splc_fast, calculate_splc, calculate_splc_optimized
 from utils.loading import get_all_input_graphml_files_path, get_all_output_csv_files_path, load_graphml_file, \
     load_csv_file
