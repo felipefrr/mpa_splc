@@ -9,7 +9,7 @@ from utils.loading import get_file
 @pytest.mark.benchmark(group="Remove Cycle")
 def test_remove_cycle(benchmark):
     file_dir = 'benchmarks/data/input/'
-    file_name = '392k_nodes_642k_edges.csv'
+    file_name = '392k_nodes_642k_edges_with_cycles.csv'
     file_path = get_file(file_dir, file_name)
     data = pd.read_csv(file_path)
     G = nx.from_pandas_edgelist(

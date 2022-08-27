@@ -17,6 +17,9 @@ We're covering the following aspects of this project: Unit Tests, Code Coverage,
 - [✔️] Implement my own version of SPLC
 - [✔️] Implement cycle removal. P.S.: we need to make a discussion about the most suitable method considering your graph structure and magnitude of the set cycles. It was implemented in the `convert_graph_to_dag`, considering the heuristics of removing the edge with the least `pln_date`.
 
+### Implementation notes
+The `pln_date` is a source node attribute, not an edge attribute, but setting it as an edge attribute seems to not impact the logic. However, I'm not sure, we will need further inspection.
+
 ## Getting started
 ```
 # Clone this repo and change directory

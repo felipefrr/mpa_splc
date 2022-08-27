@@ -48,5 +48,8 @@ bash:
 
 performance-compare:
 	@echo [ === BENCHMARK === ]
-	pytest --benchmark-save=edge_weights --benchmark-verbose --benchmark-save-data benchmarks/benchmark_edge_weights_functions.py
-	pytest --benchmark-save=edge_weights_heavy --benchmark-verbose --benchmark-save-data benchmarks/benchmark_edge_weights_heavy.py -k 'test_calc_splc_optimized'
+	pytest --disable-warnings --benchmark-save=edge_weights --benchmark-verbose --benchmark-save-data benchmarks/benchmark_edge_weights_functions.py
+	pytest --disable-warnings --benchmark-save=edge_weights_heavy --benchmark-verbose --benchmark-save-data benchmarks/benchmark_edge_weights_heavy.py -k 'test_calc_splc_optimized'
+
+heavy-benchmark:
+	pytest --disable-warnings --benchmark-save=heavy_functions --benchmark-verbose --benchmark-save-data benchmarks/benchmark_optimized.py > benchmark_output.txt
