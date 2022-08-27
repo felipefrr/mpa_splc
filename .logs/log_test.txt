@@ -1,0 +1,161 @@
+find . -name '*.pyc' -exec rm -f {} +
+find . -name '*.pyo' -exec rm -f {} +
+find . -name '*~' -exec rm -f {} +
+find . -name '__pycache__' -exec rm -fr {} +
+rm -f .coverage
+rm -f .coverage.*
+find . -name '.pytest_cache' -exec rm -fr {} +
+find . -name '.my_cache' -exec rm -fr {} +
+rm -rf logs/
+. .venv/bin/activate && py.test tests --cov=src --cov-report=term-missing --cov-fail-under 95
+============================= test session starts ==============================
+platform linux -- Python 3.8.13, pytest-5.4.3, py-1.11.0, pluggy-0.13.1
+benchmark: 3.4.1 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /home/ubuntu/workplace/map_splc
+plugins: cov-2.10.0, benchmark-3.4.1
+collected 23 items
+
+tests/algorithms/test_all_edge_weights_functions.py .....                [ 21%]
+tests/algorithms/test_all_graph_functions.py ............                [ 73%]
+tests/algorithms/test_all_node_weights_functions.py ..                   [ 82%]
+tests/algorithms/test_all_path_functions.py ....                         [100%]
+
+=============================== warnings summary ===============================
+/home/ubuntu/anaconda3/envs/tcc/lib/python3.8/site-packages/pandas/compat/numpy/__init__.py:10
+  /home/ubuntu/anaconda3/envs/tcc/lib/python3.8/site-packages/pandas/compat/numpy/__init__.py:10: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    _nlv = LooseVersion(_np_version)
+
+/home/ubuntu/anaconda3/envs/tcc/lib/python3.8/site-packages/pandas/compat/numpy/__init__.py:11
+  /home/ubuntu/anaconda3/envs/tcc/lib/python3.8/site-packages/pandas/compat/numpy/__init__.py:11: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    _np_version_under1p14 = _nlv < LooseVersion("1.14")
+
+/home/ubuntu/anaconda3/envs/tcc/lib/python3.8/site-packages/pandas/compat/numpy/__init__.py:12
+  /home/ubuntu/anaconda3/envs/tcc/lib/python3.8/site-packages/pandas/compat/numpy/__init__.py:12: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    _np_version_under1p15 = _nlv < LooseVersion("1.15")
+
+/home/ubuntu/anaconda3/envs/tcc/lib/python3.8/site-packages/pandas/compat/numpy/__init__.py:13
+  /home/ubuntu/anaconda3/envs/tcc/lib/python3.8/site-packages/pandas/compat/numpy/__init__.py:13: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    _np_version_under1p16 = _nlv < LooseVersion("1.16")
+
+/home/ubuntu/anaconda3/envs/tcc/lib/python3.8/site-packages/pandas/compat/numpy/__init__.py:14
+  /home/ubuntu/anaconda3/envs/tcc/lib/python3.8/site-packages/pandas/compat/numpy/__init__.py:14: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    _np_version_under1p17 = _nlv < LooseVersion("1.17")
+
+/home/ubuntu/anaconda3/envs/tcc/lib/python3.8/site-packages/pandas/compat/numpy/__init__.py:15
+  /home/ubuntu/anaconda3/envs/tcc/lib/python3.8/site-packages/pandas/compat/numpy/__init__.py:15: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    _np_version_under1p18 = _nlv < LooseVersion("1.18")
+
+/home/ubuntu/anaconda3/envs/tcc/lib/python3.8/site-packages/setuptools/_distutils/version.py:346
+  /home/ubuntu/anaconda3/envs/tcc/lib/python3.8/site-packages/setuptools/_distutils/version.py:346: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    other = LooseVersion(other)
+
+/home/ubuntu/anaconda3/envs/tcc/lib/python3.8/site-packages/pandas/compat/numpy/function.py:114
+/home/ubuntu/anaconda3/envs/tcc/lib/python3.8/site-packages/pandas/compat/numpy/function.py:114
+  /home/ubuntu/anaconda3/envs/tcc/lib/python3.8/site-packages/pandas/compat/numpy/function.py:114: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.
+    if LooseVersion(_np_version) >= LooseVersion("1.17.0"):
+
+-- Docs: https://docs.pytest.org/en/latest/warnings.html
+
+---------- coverage: platform linux, python 3.8.13-final-0 -----------
+Name                             Stmts   Miss  Cover   Missing
+--------------------------------------------------------------
+src/__init__.py                      0      0   100%
+src/algorithms/__init__.py           0      0   100%
+src/algorithms/dag.py               31      0   100%
+src/algorithms/edge_weights.py      63      0   100%
+src/algorithms/node_weights.py      13      0   100%
+src/algorithms/paths.py             14      1    93%   71
+--------------------------------------------------------------
+TOTAL                              121      1    99%
+
+Required test coverage of 95% reached. Total coverage: 99.17%
+======================== 23 passed, 9 warnings in 0.66s ========================
+. .venv/bin/activate && pylint src -j 4 --reports=y
+
+
+Report
+======
+121 statements analysed.
+
+Statistics by type
+------------------
+
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |6      |NC         |NC         |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+|method   |0      |NC         |NC         |0           |0        |
++---------+-------+-----------+-----------+------------+---------+
+|function |14     |NC         |NC         |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+
+
+
+External dependencies
+---------------------
+::
+
+    networkx (src.algorithms.dag)
+    src 
+      \-algorithms 
+        \-dag (src.algorithms.edge_weights)
+        \-node_weights (src.algorithms.edge_weights)
+
+
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |136    |27.04 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|docstring |309    |61.43 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|comment   |2      |0.40  |NC       |NC         |
++----------+-------+------+---------+-----------+
+|empty     |56     |11.13 |NC       |NC         |
++----------+-------+------+---------+-----------+
+
+
+
+Duplication
+-----------
+
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |NC       |NC         |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |NC       |NC         |
++-------------------------+------+---------+-----------+
+
+
+
+Messages by category
+--------------------
+
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+|refactor   |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+|warning    |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+|error      |0      |NC       |NC         |
++-----------+-------+---------+-----------+
+
+
+
+
+------------------------------------
+Your code has been rated at 10.00/10
+
+. .venv/bin/activate && mypy src
+Success: no issues found in 6 source files
