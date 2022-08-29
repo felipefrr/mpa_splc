@@ -22,7 +22,7 @@ class HugeGraph:
         )
         self.syncs = get_syncs(self.G)
 
-        file_name = '844k_nodes_1.6m_edges_with_cycles.csv'
+        file_name = '844k_nodes_1.6m_edges_without_cycles.csv'
         file_path = get_file(file_dir, file_name)
         data = pd.read_csv(file_path)
         self.G1 = nx.from_pandas_edgelist(
@@ -42,13 +42,13 @@ def di_G():
 
 
 @pytest.mark.benchmark(group="SPLC")
-def test_calc_splc_optimized(benchmark, di_G):
+def test_splc_optimized1(benchmark, di_G):
     @benchmark
     def splc_heavy_392k():
         calculate_splc_optimized(di_G.G, di_G.syncs)
 
 @pytest.mark.benchmark(group="SPLC")
-def test_calc_splc_optimized(benchmark, di_G):
+def test_splc_optimized2(benchmark, di_G):
     @benchmark
     def splc_heavy_844k():
         calculate_splc_optimized(di_G.G1, di_G.syncs1)
