@@ -58,6 +58,25 @@ The benchmark in the file  `tests_path_functions_heavy.py` with the large graph 
 pytest --benchmark-verbose benchmarks/tests_path_functions_heavy.py
 ```
 
+## Utils
+
+The script `remove_cycle_from_file.py` at `utils` remove cycles from graphs in the `with_cycles.csv` extension at the `benchmarks/data/input` folder and export to the same directory without the cycles. 
+Usage:
+```
+remove_cycle_from_file.py graph1_with_cycle.csv graph2_with_cycle.csv ... graphn_with_cycle.csv
+
+Remove cycles from graphs
+
+Positional arguments:
+ with_cycle.csv        .csv file name.
+```
+Example:
+```
+cd utils
+python remove_cycle_from_file.py 392k_nodes_642k_edges_with_cycles.csv 844k_nodes_1.6m_edges_with_cycles.csv
+```
+The expected output is two files`392k_nodes_642k_edges_without_cycles.csv` and `844k_nodes_1.6m_edges_without_cycles.csv` created in the `benchmarks/data/input` folder.
+
 ## 📃 Citation
 
 ```bibtex

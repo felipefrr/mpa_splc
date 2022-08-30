@@ -26,7 +26,8 @@ if __name__ == "__main__":
             edge_attr="pln_date"
         )
         remove_cycles(G)
-        nx.write_edgelist(G, file_path.replace("with", "without"), data=["pln_date"], delimiter=',')
+        df = nx.to_pandas_dataframe(G, nodelist=["Source", "Target", "pln_date"])
+        df.to_csv(file_path.replace("with", "without"), sep=',')
 
 
 
