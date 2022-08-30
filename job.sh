@@ -10,7 +10,7 @@
 #git commit -m "Cycle removed from 884k"
 #git push
 #cd ..
-make heavy-benchmark
+make heavy-benchmark-main-path
 git add .
-git commit --amend --no-edit
-git push -f
+git commit -m "The output of the heavy-benchmark-main-path"
+git push

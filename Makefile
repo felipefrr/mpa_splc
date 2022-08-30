@@ -53,3 +53,6 @@ performance-compare:
 
 heavy-benchmark:
 	pytest --disable-warnings --benchmark-save=heavy_functions --benchmark-verbose --benchmark-save-data benchmarks/benchmark_optimized.py > benchmark_output.txt
+
+heavy-benchmark-main-path:
+	pytest --disable-warnings --benchmark-save=heavy_functions --benchmark-verbose --benchmark-save-data benchmarks/benchmark_optimized.py > benchmark_main_path_output.txt

@@ -37,6 +37,9 @@ make setup
 
 # Run the suite of tests and checks on docker
 make run-checks
+
+# If you want to benchmark the main path with the heavy files `benchmarks/data/input/392k_nodes_642k_edges_without_cycles.csv` and `benchmarks/data/input/844k_nodes_1.6m_edges_without_cycles.csv`.
+make heavy-benchmark-main-path
 ```
 
 ## Benchmark

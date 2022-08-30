@@ -23,9 +23,8 @@ def di_G():
 
 @pytest.mark.benchmark(group="Main Path")
 def test_calc_splc_optimized(benchmark, di_G):
-    calculate_splc_optimized(di_G.G, di_G.syncs)
-
     @benchmark
     def main_path_splc():
+        calculate_splc_optimized(di_G.G, di_G.syncs)
         main_path(di_G.G)
 
