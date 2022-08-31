@@ -33,7 +33,6 @@ def calculate_n_all_minus(G, node: str):
     G.nodes[node]["Nall-"] = 1
     for predecessor in G.predecessors(node):
         G.nodes[node]["Nall-"] += G.nodes[predecessor]["Nall-"]
-    print(G.nodes[node]["Nall-"])
 
 
 def calculate_n_plus(G, node: str, syncs: list):
