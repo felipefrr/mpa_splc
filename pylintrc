@@ -1,2 +1,5 @@
 [BASIC]
-good-names=G,G1,G2,di_G
+good-names=G,G1,G2,di_G,H
+
+[FORMAT]
+max-line-length=105

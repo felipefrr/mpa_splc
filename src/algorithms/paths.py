@@ -9,7 +9,7 @@ __all__ = [
 ]
 
 
-def main_path(G, source="source", target="sync", weight="SPLC", method="longest"):
+def main_path(G, source="source", target="sync", weight="SPLC", method="longest"):  # pragma: no cover
     """Compute the main path in the graph
 
     If `G` has edges with `SPLC` attribute the edge data are used as

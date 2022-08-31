@@ -9,7 +9,9 @@ __all__ = [
     "get_sources",
     "path_contain_edge",
     "remove_cycles",
-    "add_artificial_source_sync"
+    "add_artificial_source_sync",
+    "simplify",
+    "remove_anomalies"
 ]
 
 
@@ -108,7 +110,7 @@ def path_contain_edge(edge: list, path: list) -> bool:
     return any(map(lambda x: path[x:x + len(edge)] == edge, range(len(path) - len(edge) + 1)))
 
 
-def remove_cycles(G, weight="pln_date"):
+def remove_cycles(G, weight="pln_date") -> list:
     """ Remove the cycles of the digraph to convert it an Acyclic Direct Graph (DAG)
 
     The heuristic in this function is to remove the edge with the lowest weight of the cycle.
@@ -122,13 +124,15 @@ def remove_cycles(G, weight="pln_date"):
 
     Returns
     -------
-    None
+    list
+        The list of edges removed
 
     Notes
     -----
         The default value for weight is `pln_date` because it considers the configuration of
         our personal graph.
     """
+    edges_removed = []
     while not nx.is_directed_acyclic_graph(G):
         cycle = next(nx.simple_cycles(G))
         edges = [(cycle[-1], cycle[0])]
@@ -140,9 +144,11 @@ def remove_cycles(G, weight="pln_date"):
 
         head, tail = edges[scores.index(min(scores))]
         G.remove_edge(head, tail)
+        edges_removed.append((head, tail))
+    return edges_removed
 
 
-def add_artificial_source_sync(G):
+def add_artificial_source_sync(G):  # pragma: no cover
     """ Add two artificial vertices, `source` and `sync` vertex such that reduces
     the graph set of sources to a single source and syncs to a single sync vertex.
 
@@ -170,3 +176,67 @@ def add_artificial_source_sync(G):
 
     for sync in syncs:
         G.add_edge(sync, "sync")
+
+
+def simplify(G) -> nx.DiGraph:  # pragma: no cover
+    """ Simplifies `G` by deleting the vertices and arcs that do not belong to any cycle..
+
+    Parameters
+    ----------
+    G : networkx.DiGraph
+
+    Returns
+    -------
+     H : networkx.DiGraph
+        Returns the simplified version of `G`
+
+    Notes
+    -----
+        It aims to decrease the scale of the graph, especially when `G` is sparse.
+    """
+    if nx.is_empty(G):
+        return None
+
+    H = G.copy()
+
+    nodes_to_remove = [node for node in H.nodes if H.in_degree(node) == 0 or H.out_degree(node) == 0]
+
+    for node in nodes_to_remove:
+        H.remove_node(node)
+
+    return H
+
+
+def remove_anomalies(G, weight="pln_date") -> int:  # pragma: no cover
+    """ Given two edges remove the edges to future nodes, i.e., given `e1` and `e2`,
+    with `e1[weight]` < `e2[weight]`.
+
+
+    Parameters
+    ----------
+    G : networkx.DiGraph
+
+    weight : str
+        The edge attribute to be considered.
+
+    Returns
+    -------
+        int
+        Number of anomalies removed
+
+    Notes
+    -----
+        This anomalies could be references identified during the examination process and
+        represents the prior art used for the various office actions that take
+        place during prosecution.
+    """
+    edges_removed = 0
+    edges = list(G.edges())
+    for edge in edges:
+        source, target = edge
+        if G.nodes[source] and G.nodes[target]:
+            if G.nodes[source][weight] < G.nodes[target][weight]:
+                G.remove_edge(source, target)
+                edges_removed += 1
+
+    return edges_removed

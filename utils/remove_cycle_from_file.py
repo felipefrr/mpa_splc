@@ -2,6 +2,8 @@
 
 import os
 import sys
+import time
+import datetime
 
 import networkx as nx
 import pandas as pd
@@ -11,8 +13,7 @@ local_path = os.path.abspath(os.path.dirname(__file__))
 
 if __name__ == "__main__":
     local_path = os.path.join(local_path, "../benchmarks/data/input/")
-    print(local_path)
-    from src.algorithms.dag import remove_cycles
+    from src.algorithms.dag import remove_cycles, simplify
     n_files = len(sys.argv)
     for i in range(1, n_files):
         file_name = sys.argv[i]
@@ -25,9 +26,15 @@ if __name__ == "__main__":
             create_using=nx.DiGraph(),
             edge_attr="pln_date"
         )
-        remove_cycles(G)
-        df = nx.to_pandas_dataframe(G, nodelist=["Source", "Target", "pln_date"])
-        df.to_csv(file_path.replace("with", "without"), sep=',')
-
+        H = simplify(G)
+        start = time.process_time()
+        edges_to_remove = remove_cycles(H)
+        G.remove_edges_from(edges_to_remove)
+        end = time.process_time() - start
+        print("\nRunning time of {}: \t {}".format(file_name, str(datetime.timedelta(seconds=end))))
+        fh = open(file_path.replace("with", "without"), "wb")
+        header = str.encode("Source,Target,pln_date\n")
+        fh.write(header)
+        nx.write_edgelist(G, fh, data=["pln_date"], delimiter=',')
 
 

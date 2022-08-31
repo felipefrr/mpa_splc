@@ -7,7 +7,12 @@ We have the intent of further adding these algorithms implementations in the Net
 We're covering the following aspects of this project: Unit Tests, Code Coverage, Linting and Type Checking.
 
 ### 📝💻 Todo
-- [ ] Improve unit tests implementation
+- [⏳] Write the unit tests for remaining methods:
+  - `add_artificial_source_sync`
+  - `simplify`
+  - `remove_anomalies`
+  - `main_path`
+- [⏳] Improve unit tests implementation
 - [✔️] Implement function add artificial source and sync vertex
 - [✔️] Implement Main Path Search
 - [✔️] Migrate all the code of rdurelli/splc_main_path to this repo
@@ -63,6 +68,22 @@ pytest --benchmark-verbose benchmarks/tests_path_functions_heavy.py
 
 ## Utils
 
+### Main Path
+The script `get_map.py` at `utils` was made to perform the Main Path Analysis in the all files with the suffix `_without_cycles.csv` at the folder `benchmarks/data/input`, this file must have the `.csv` header "Source,Target,pln_date".
+
+You can run the script by (check if you activated the virtual environment):
+```
+cd utils
+python get_map.py
+```
+E.g., the expected output is as it follows:
+```
+Running time of /home/frrr/workplace/map_splc/utils/../benchmarks/data/input/844k_nodes_1.6m_edges_without_cycles.csv: 	 0:00:18.144553
+1967 anomalous citations removed
+source -> US20160197204A1 -> US20140224307A1 -> US20120211068A1 -> US20120103403A1 -> US20120211071A1 -> US20100282288A1 -> US20100012175A1 -> US20100122764A1 -> US20100012174A1 -> US20100116327A1 -> US20100093127A1 -> US20090188546A1 -> US20090288703A1 -> US20080245409A1 -> US20050274411A1 -> US20040079408A1 -> US20040065363A1 -> US6316715B1 -> US5407491A -> sync
+```
+
+### Remove Cycle
 The script `remove_cycle_from_file.py` at `utils` remove cycles from graphs in the `with_cycles.csv` extension at the `benchmarks/data/input` folder and export to the same directory without the cycles. 
 Usage:
 ```
@@ -79,6 +100,7 @@ cd utils
 python remove_cycle_from_file.py 392k_nodes_642k_edges_with_cycles.csv 844k_nodes_1.6m_edges_with_cycles.csv
 ```
 The expected output is two files`392k_nodes_642k_edges_without_cycles.csv` and `844k_nodes_1.6m_edges_without_cycles.csv` created in the `benchmarks/data/input` folder.
+
 
 ## 📃 Citation
 
