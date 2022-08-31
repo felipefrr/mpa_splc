@@ -1,0 +1,21 @@
+============================= test session starts ==============================
+platform linux -- Python 3.8.13, pytest-5.4.3, py-1.11.0, pluggy-0.13.1
+benchmark: 3.4.1 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /home/ubuntu/workplace/map_splc
+plugins: cov-2.10.0, benchmark-3.4.1
+collected 2 items
+
+benchmarks/benchmark_optimized.py ..                                     [100%]
+
+
+Computing stats ...Computing stats ... group 1/1Computing stats ... group 1/1: minComputing stats ... group 1/1: min (1/2)Computing stats ... group 1/1: min (2/2)Computing stats ... group 1/1: min (1/2)Computing stats ... group 1/1: min (2/2)Computing stats ... group 1/1: maxComputing stats ... group 1/1: max (1/2)Computing stats ... group 1/1: max (2/2)Computing stats ... group 1/1: max (1/2)Computing stats ... group 1/1: max (2/2)Computing stats ... group 1/1: meanComputing stats ... group 1/1: mean (1/2)Computing stats ... group 1/1: mean (2/2)Computing stats ... group 1/1: mean (1/2)Computing stats ... group 1/1: mean (2/2)Computing stats ... group 1/1: medianComputing stats ... group 1/1: median (1/2)Computing stats ... group 1/1: median (2/2)Computing stats ... group 1/1: median (1/2)Computing stats ... group 1/1: median (2/2)Computing stats ... group 1/1: iqrComputing stats ... group 1/1: iqr (1/2)Computing stats ... group 1/1: iqr (2/2)Computing stats ... group 1/1: iqr (1/2)Computing stats ... group 1/1: iqr (2/2)Computing stats ... group 1/1: stddevComputing stats ... group 1/1: stddev (1/2)Computing stats ... group 1/1: stddev (2/2)Computing stats ... group 1/1: stddev (1/2)Computing stats ... group 1/1: stddev (2/2)Computing stats ... group 1/1: opsComputing stats ... group 1/1: ops (1/2)Computing stats ... group 1/1: ops (2/2)Computing stats ... group 1/1: ops (1/2)Computing stats ... group 1/1: ops (2/2)Computing stats ... group 1/1: ops: outliersComputing stats ... group 1/1: ops: outliers (1/2)Computing stats ... group 1/1: ops: outliers (2/2)Computing stats ... group 1/1: ops: roundsComputing stats ... group 1/1: ops: rounds (1/2)Computing stats ... group 1/1: ops: rounds (2/2)Computing stats ... group 1/1: ops: iterationsComputing stats ... group 1/1: ops: iterations (1/2)Computing stats ... group 1/1: ops: iterations (2/2)------------------------------------------------------------------------------------ benchmark 'SPLC': 2 tests ------------------------------------------------------------------------------------
+Name (time in s)                Min                   Max                  Mean            StdDev                Median               IQR            Outliers     OPS            Rounds  Iterations
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+test_splc_optimized1       745.5098 (1.0)        747.8477 (1.0)        746.8729 (1.0)      0.9388 (1.0)        747.0673 (1.0)      1.4464 (1.0)           2;0  0.0013 (1.0)           5           1
+test_splc_optimized2     4,277.8059 (5.74)     4,292.4164 (5.74)     4,282.7437 (5.73)     5.6323 (6.00)     4,281.5276 (5.73)     4.8535 (3.36)          1;1  0.0002 (0.17)          5           1
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Legend:
+  Outliers: 1 Standard Deviation from Mean; 1.5 IQR (InterQuartile Range) from 1st Quartile and 3rd Quartile.
+  OPS: Operations Per Second, computed as 1 / Mean
+================= 2 passed, 9 warnings in 35235.06s (9:47:15) ==================
