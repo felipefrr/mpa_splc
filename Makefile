@@ -25,7 +25,7 @@ clean: clean-pyc clean-test
 	rm -rf logs/
 
 test: clean
-	. .venv/bin/activate && py.test tests --cov=src --cov-report=term-missing --cov-fail-under 95
+	. .venv/bin/activate && py.test tests --benchmark-disable --cov=src --cov-report=term-missing --cov-fail-under 95
 
 mypy:
 	. .venv/bin/activate && mypy src
