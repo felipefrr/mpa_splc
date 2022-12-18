@@ -44,6 +44,7 @@ def test_calculate_splc_correctness(di_G):
         assert di_G.G[di_G.edges[i][0]][di_G.edges[i][1]]["SPLC"] == splc_expected[i]
 
 
+@pytest.mark.skip(reason="Needs refactoring and new input/output files.")
 def test_splc_correctness_with_inputs():
     input_files = get_all_input_graphml_files_path()
     output_files = get_all_output_csv_files_path()

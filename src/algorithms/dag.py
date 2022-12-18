@@ -11,7 +11,8 @@ __all__ = [
     "remove_cycles",
     "add_artificial_source_sync",
     "simplify",
-    "remove_anomalies"
+    "remove_anomalies",
+    "add_artificial_sync"
 ]
 
 
@@ -178,8 +179,31 @@ def add_artificial_source_sync(G):  # pragma: no cover
         G.add_edge(sync, "sync")
 
 
+def add_artificial_sync(G):  # pragma: no cover
+    """ Add an artificial `sync` vertex such that reduces the graph set
+    of syncs to a single sync vertex.
+
+    Parameters
+    ----------
+    G : networkx.DiGraph
+
+    Returns
+    -------
+    None
+
+    """
+    if nx.is_empty(G):
+        return
+
+    syncs = get_syncs(G)
+
+    for sync in syncs:
+        G.add_edge(sync, "sync")
+
+
 def simplify(G) -> nx.DiGraph:  # pragma: no cover
-    """ Simplifies `G` by deleting the vertices and arcs that do not belong to any cycle..
+    """ Simplifies creating a subgraph of `G` by deleting the vertices and arcs from each source and
+    to each sync.
 
     Parameters
     ----------

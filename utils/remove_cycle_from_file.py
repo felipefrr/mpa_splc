@@ -26,8 +26,8 @@ if __name__ == "__main__":
             create_using=nx.DiGraph(),
             edge_attr="pln_date"
         )
-        H = simplify(G)
         start = time.process_time()
+        H = simplify(G)
         edges_to_remove = remove_cycles(H)
         G.remove_edges_from(edges_to_remove)
         end = time.process_time() - start

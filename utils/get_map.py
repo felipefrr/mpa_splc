@@ -29,16 +29,17 @@ if __name__ == "__main__":
             target='Target',
             create_using=nx.DiGraph()
         )
-        nx.set_node_attributes(G, pd.Series(data.pln_date.values, index=data.Source).to_dict(), "pln_date")
+        nx.set_node_attributes(G, pd.Series(data.pln_date.values, index=data.Source).to_dict(), name="pln_date")
         edges_removed = remove_anomalies(G)
         add_artificial_source_sync(G)
         syncs = get_syncs(G)
-        start = time.process_time()
         calculate_splc_optimized(G, syncs)
+        start = time.process_time()
+        path = main_path(G)
         end = time.process_time() - start
         print("\nRunning time of {}: \t {}".format(file_name, str(datetime.timedelta(seconds=end))))
         print("{} anomalous citations removed".format(edges_removed))
-        path = main_path(G)
+
         print(*path, sep=" -> ")
         new_file_name = file_name.split("input/", 1)[1]
         new_file_name = new_file_name.replace("_without_cycles.csv", ".txt")

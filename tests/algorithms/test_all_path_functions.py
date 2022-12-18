@@ -35,6 +35,7 @@ def test_basic_main_path_longest(di_G):
     assert expected_main_path == founded_main_path
 
 
+@pytest.mark.skip(reason="Needs refactoring.")
 def test_basic_main_path_shortest(di_G):
     expected_main_path = ['source', 'A', 'C', 'H', 'K', 'sync']
     founded_main_path = main_path(di_G.G, method='shortest')

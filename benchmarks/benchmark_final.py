@@ -1,4 +1,4 @@
-# pytest --benchmark-timer=time.process_time --benchmark-save=final --benchmark-warmup=OFF --benchmark-warmup-iterations=0 --benchmark-min-rounds=5 --benchmark-save-data --benchmark-verbose benchmarks/benchmark_final.py
+# pytest --benchmark-timer=time.process_time --benchmark-save=final --benchmark-warmup=OFF --benchmark-warmup-iterations=0 --benchmark-min-rounds=1 --benchmark-save-data --benchmark-verbose benchmarks/benchmark_final.py
 import networkx as nx
 import pandas as pd
 import pytest
@@ -56,19 +56,19 @@ def di_G():
 def test_main_path_f1(benchmark, di_G):
     @benchmark
     def file1_23n_33e():
-        calculate_splc_optimized(di_G.G, di_G.syncs)
-        main_path(di_G.G)
+        calculate_splc_optimized(di_G.G1, di_G.syncs)
+        main_path(di_G.G1)
 
 
 def test_main_path_f2(benchmark, di_G):
     @benchmark
     def file1_23n_33e():
-        calculate_splc_optimized(di_G.G1, di_G.syncs1)
-        main_path(di_G.G1)
+        calculate_splc_optimized(di_G.G2, di_G.syncs2)
+        main_path(di_G.G2)
 
 
 def test_main_path_f3(benchmark, di_G):
     @benchmark
     def file1_844n_1me():
-        calculate_splc_optimized(di_G.G2, di_G.syncs2)
-        main_path(di_G.G2)
+        calculate_splc_optimized(di_G.G3, di_G.syncs3)
+        main_path(di_G.G3)
